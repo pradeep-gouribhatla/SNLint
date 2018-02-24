@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_snlint.ScriptValidator</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>ScriptValidator</name>
+        <script><![CDATA[var ScriptValidator = Class.create();
+ScriptValidator.prototype = {
+    initialize: function() {
+		this.ast = null;
+		this.context = null;
+    },
+	 
+	runRulesOnAST: function(ast, rules, context){
+		if(!ast || !rules) return;
+		
+		var astParser = new AstTraverse();
+		astParser.parseAndExecuteRules(ast, rules, context);
+	},
+	
+	executeOnRecord: function(){
+		
+	},
+
+	executeOnScript: function(script, fileInfo){
+		if(!script) return;
+		if (!fileInfo) fileInfo = {};
+
+		this.result = [];
+		this.context = {
+			file : fileInfo.file || '',
+			fileId : fileInfo.fileSysId || '',
+			fileType : fileInfo.fileType || '',
+			fileMeta : fileInfo.fileMeta || {},
+			script : script,
+		};
+		
+		this.context.report = function(node, msg){
+			this.result.push({
+				context : this.context,
+				node : node,
+				message : msg
+			})
+		};
+
+		
+		var _rHelper = new RulesHelper();
+		var _rules = _rHelper.getAllScriptRules();
+
+		var astGenerator = new NowESPrima().esprima;
+		var scriptAST = astGenerator.parseScript(script); 		
+		
+		this.runRulesOnAST(scriptAST, _rules, this.context);
+						   
+		return this.result;
+		
+	},
+
+	type: 'ScriptValidator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>pradeep.g</sys_created_by>
+        <sys_created_on>2018-01-08 16:01:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>16566b19db2bcf00a86a5404ce961919</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>ScriptValidator</sys_name>
+        <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
+        <sys_update_name>sys_script_include_16566b19db2bcf00a86a5404ce961919</sys_update_name>
+        <sys_updated_by>pradeep.g</sys_updated_by>
+        <sys_updated_on>2018-01-11 05:49:48</sys_updated_on>
+    </sys_script_include>
+</record_update>

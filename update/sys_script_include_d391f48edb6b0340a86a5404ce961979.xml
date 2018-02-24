@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_snlint.Test317</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Test317</name>
+        <script><![CDATA[var Test317 = Class.create();
+Test317.prototype = {
+    initialize: function() {},
+
+    testFunc: function() {
+        /**
+         * For variables go to: http://wiki.service-now.com/index.php?title=Import_Sets_portal
+         **/
+
+        var custProfile = new GlideRecord("u_customer_product_profile");
+        custProfile.addQuery("u_product.u_product_name", source.u_application_name);
+        custProfile.addQuery("u_customer_profile.u_account.name", source.u_customer_profiles);
+        custProfile.query();
+        if (custProfile.next()) {
+            console.log("TEST");
+            console.log("TEST");
+            gs.debug("TEST");
+            var choice = new GlideRecord("sys_choice");
+            choice.addEncodedQuery("name=u_customer_product_profile^element=u_choice_usage_indicator");
+            choice.addQuery("label", source.u_usage_indicator);
+            choice.query();
+            if (choice.next()) {
+                custProfile.u_choice_usage_indicator = choice.value;
+            } else {
+                gs.log("Load Customer Apps Profiles: No Choice List for- " + source.u_usage_indicator);
+            }
+            custProfile.u_usage = source.u_usage_date;
+            custProfile.u_value = source.u_value;
+            custProfile.u_value2 = source.u_value2;
+            gs.log(
+                "Load Customer Apps Profiles: Updating Record- " +
+                    source.u_application_name +
+                    ":" +
+                    source.u_customer_profiles
+            );
+            custProfile.update();
+        } else {
+            gs.log(
+                "Load Customer Apps Profiles: No Record Found for- " +
+                    source.u_application_name +
+                    ":" +
+                    source.u_customer_profiles
+            );
+        }
+        console.log("TEST");
+        gs.print("asdasd");
+
+        ignore = true; //Always ignore default transform map insert/update
+    },
+
+    type: "Test317"
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>pradeep.g</sys_created_by>
+        <sys_created_on>2018-01-10 10:38:37</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d391f48edb6b0340a86a5404ce961979</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test317</sys_name>
+        <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
+        <sys_update_name>sys_script_include_d391f48edb6b0340a86a5404ce961979</sys_update_name>
+        <sys_updated_by>pradeep.g</sys_updated_by>
+        <sys_updated_on>2018-01-10 10:38:37</sys_updated_on>
+    </sys_script_include>
+</record_update>

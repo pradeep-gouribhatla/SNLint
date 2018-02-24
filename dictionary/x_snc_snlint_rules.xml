@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Rules" max_length="40" name="x_snc_snlint_rules" type="collection">
+        <element label="Description" max_length="250" name="description" type="string"/>
+        <element choice="1" label="Level" max_length="40" name="level" type="choice">
+            <choice>
+                <element label="Info" sequence="10" value="10"/>
+                <element label="Warn" sequence="20" value="20"/>
+                <element label="Error" sequence="30" value="30"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element default="/* RULE &#13;&#10; * &#13;&#10; * Params - The context object contains additional functionality that is helpful for &#13;&#10; *          rules to do their jobs.&#13;&#10; * 1. context.report() - USE context.report() to publish a warning or error&#13;&#10; *    EX - context.report(node, 'Do not use console.log in client side code');&#13;&#10; * 2. getFilename()&#13;&#10; * 3. getScope()&#13;&#10; * 4. getSourceCode()&#13;&#10; * &#13;&#10; * return - an object with methods that ESLint calls to &quot;visit&quot; nodes &#13;&#10; * while traversing the abstract syntax tree. key &#13;&#10; *      =&gt; if key is a node type, SNLint calls that visitor function while going down the tree&#13;&#10; *      =&gt; key plus &quot;:exit&quot;, SNLint calls that visitor function while going up the tree&#13;&#10; */&#13;&#10;&#13;&#10;(function(context/*context of the rule*/) {&#13;&#10;&#9;return {&#13;&#10;        // example callback for CallExpression Nodes&#13;&#10;&#9;&#9;&quot;CallExpression&quot;: function(node) {&#13;&#10;&#9;&#9;&#9;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;}&#13;&#10;&#9;&#13;&#10;})(context);" label="Script" max_length="8000" name="script" type="script"/>
+    </element>
+</database>
