@@ -7,13 +7,11 @@
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-09 17:53:48</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
         <sys_id>96bbcdbddba30340a86a5404ce9619a9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>GlideEvaluator.evaluateScript</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy/>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_scope_privilege_96bbcdbddba30340a86a5404ce9619a9</sys_update_name>
         <sys_updated_by>pradeep.g</sys_updated_by>

@@ -63,13 +63,11 @@ Test317.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-10 10:38:37</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
         <sys_id>d391f48edb6b0340a86a5404ce961979</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Test317</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_d391f48edb6b0340a86a5404ce961979</sys_update_name>
         <sys_updated_by>pradeep.g</sys_updated_by>
