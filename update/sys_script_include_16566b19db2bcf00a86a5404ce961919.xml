@@ -75,11 +75,16 @@ SNLint.prototype = {
      */
     generateAST: function(script) {
         if (!script) return;
-
-        var _astEngine = new __NowESPrima().esprima;
-        var _scriptAST = _astEngine.parseScript(script, {loc:true});
-
-        return _scriptAST;
+		
+		try{
+			// generate anstract syntax tree for 
+			var _astEngine = new __NowESPrima().esprima;
+			var _scriptAST = _astEngine.parseScript(script, {loc:true});
+			return _scriptAST;
+			
+		} catch(e){
+			gs.error('Error generating AST' + e);
+		}
     },
 
     /**
@@ -87,35 +92,38 @@ SNLint.prototype = {
      */
     _executeRulesOnAST: function(ast, ruleObjects) {
         if (!ast || !ruleObjects) return;
+		
+		try{
+        
+			var _parser = new __NowESTraverse();
 
-        var _parser = new __NowESTraverse();
-
-		_parser.traverse(ast, {
-			enter: function(node, parent) {
-				node.parent = parent;
-				
-				
-				
-				ruleObjects.forEach(function(ruleObj) {
-					var rules = ruleObj.definition;					
-					if (node.type && rules[node.type] ) {
-						if (typeof rules[node.type] == "function") {
-							rules[node.type](node);
+			_parser.traverse(ast, {
+				enter: function(node, parent) {
+					node.parent = parent;
+					ruleObjects.forEach(function(ruleObj) {
+						var rules = ruleObj.definition;					
+						if (node.type && rules[node.type] ) {
+							if (typeof rules[node.type] == "function") {
+								rules[node.type](node);
+							}
 						}
-					}
-				});
-			},
-			leave: function(node, parent) {
-				ruleObjects.forEach(function(ruleObj) {
-					var rules = ruleObj.definition;
-					if (node.type && rules[node.type + ":exit"] >= 0) {
-						if (typeof rules[node.type] == "function") {
-							rules[node.type](node);
+					});
+				},
+				leave: function(node, parent) {
+					ruleObjects.forEach(function(ruleObj) {
+						var rules = ruleObj.definition;
+						if (node.type && rules[node.type + ":exit"] >= 0) {
+							if (typeof rules[node.type] == "function") {
+								rules[node.type](node);
+							}
 						}
-					}
-				});
-			}
-		});
+					});
+				}
+			});
+			
+		} catch(e){
+			gs.error('Error parsing AST' + e);
+		}
 
     },
 
@@ -126,13 +134,13 @@ SNLint.prototype = {
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-08 16:01:21</sys_created_on>
         <sys_id>16566b19db2bcf00a86a5404ce961919</sys_id>
-        <sys_mod_count>39</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>SNLint</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_16566b19db2bcf00a86a5404ce961919</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-25 13:34:01</sys_updated_on>
+        <sys_updated_on>2018-02-25 19:12:35</sys_updated_on>
     </sys_script_include>
 </record_update>

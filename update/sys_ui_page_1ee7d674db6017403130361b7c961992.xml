@@ -51,20 +51,31 @@
 </j:jelly>]]></html>
         <name>SNLintDebug</name>
         <processing_script><![CDATA[//Get  Script
+var results;
 var _script = request.getParameter('script_snippet');
 
 //Run linting on all rules
-var snLint = new SNLint(); 
-var results = snLint.runOnScript(_script); 
+if (_script){
+	try{
+		var results = new SNLint().runOnScript(_script);
+	} catch(e){
+		var errorMsg = 'Oops! Something went wrong. Try again \n ' + e;
+	}
+}
 
 //print results
-var _output = '', fLines = [] ;
-results.forEach(function(r){	
-  _output += ('<p>Line ['+r.node.loc.start.line + '] : ' + r.message + '</p>');
-  fLines.push(r.node.loc.start.line);
-});
+var _output = '', fLines = [], lno = 0;
+if (results && results.length > 0 ){
+	results.forEach(function(r){	
+	  _output += ('<p>Line ['+r.node.loc.start.line + '] : ' + r.message + '</p>');
+	  fLines.push(r.node.loc.start.line);
+	});	
+} else if (results && results.length == 0 ) {
+	_output = '<h4>There are no findings for given script</h4>';
+} else {
+	_output = errorMsg || 'Oops! Something went wrong' ;
+}
 
-var lno = 0;
 var _outputScript = _script
 	.split('\n')
 	.map(function(cl){ 
@@ -80,18 +91,19 @@ gs.getSession().putClientData('snlint_results',_output);
 gs.getSession().putClientData('snlint_script', _outputScript);
 
 
+
 ]]></processing_script>
         <sys_class_name>sys_ui_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-25 14:11:41</sys_created_on>
         <sys_id>1ee7d674db6017403130361b7c961992</sys_id>
-        <sys_mod_count>29</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>SNLintDebug</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy/>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_ui_page_1ee7d674db6017403130361b7c961992</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-25 16:47:08</sys_updated_on>
+        <sys_updated_on>2018-02-25 18:50:25</sys_updated_on>
     </sys_ui_page>
 </record_update>
