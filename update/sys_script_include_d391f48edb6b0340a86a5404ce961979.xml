@@ -50,7 +50,13 @@ Test317.prototype = {
                     ":" +
                     source.u_customer_profiles
             );
-        }
+        
+		}
+		
+		var ga = GlideAjax();
+		ga.getXMLWait();
+		
+		 
         console.log("TEST");
         gs.print("asdasd");
 
@@ -64,13 +70,13 @@ Test317.prototype = {
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-10 10:38:37</sys_created_on>
         <sys_id>d391f48edb6b0340a86a5404ce961979</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Test317</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_d391f48edb6b0340a86a5404ce961979</sys_update_name>
-        <sys_updated_by>pradeep.g</sys_updated_by>
-        <sys_updated_on>2018-01-10 10:38:37</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-24 19:56:58</sys_updated_on>
     </sys_script_include>
 </record_update>

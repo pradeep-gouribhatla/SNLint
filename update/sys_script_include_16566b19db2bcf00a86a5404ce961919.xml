@@ -3,75 +3,137 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>public</access>
         <active>true</active>
-        <api_name>x_snc_snlint.ScriptValidator</api_name>
+        <api_name>x_snc_snlint.SNLint</api_name>
         <client_callable>false</client_callable>
         <description/>
-        <name>ScriptValidator</name>
-        <script><![CDATA[var ScriptValidator = Class.create();
-ScriptValidator.prototype = {
+        <name>SNLint</name>
+        <script><![CDATA[/**
+ *  == SNLint ==
+ */
+var SNLint = Class.create();
+SNLint.prototype = {
+    /**
+     * initialize
+     */
     initialize: function() {
-		this.ast = null;
-		this.context = null;
+        //this.ast = null;
+        //this.context = null;
+        this.log = new SNLintLogger();
     },
-	 
-	runRulesOnAST: function(ast, rules, context){
-		if(!ast || !rules) return;
-		
-		var astParser = new AstTraverse();
-		astParser.parseAndExecuteRules(ast, rules, context);
-	},
-	
-	executeOnRecord: function(){
-		
-	},
 
-	executeOnScript: function(script, fileInfo){
-		if(!script) return;
-		if (!fileInfo) fileInfo = {};
+    /**
+     * Run LINTING on any raw script
+     *  @param {String} script
+     *  @param {Array of Rules} rules
+     *
+     *  @return {Array of Findings} array findings on the given
+     */
+    runOnScript: function(script) {
+        if (!script) return;
 
-		this.result = [];
-		this.context = {
-			file : fileInfo.file || '',
-			fileId : fileInfo.fileSysId || '',
-			fileType : fileInfo.fileType || '',
-			fileMeta : fileInfo.fileMeta || {},
-			script : script,
-		};
-		
-		this.context.report = function(node, msg){
-			this.result.push({
-				context : this.context,
-				node : node,
-				message : msg
-			})
-		};
+        // Create context for this execution
+        var context = this.createContext(script);
 
-		
-		var _rHelper = new RulesHelper();
-		var _rules = _rHelper.getAllScriptRules();
+        // Get all script Objects
+        var rulesHelper = new SNLintRulesUtil();
+        _ruleObjects = rulesHelper.getAllRuleObjects(context);
 
-		var astGenerator = new NowESPrima().esprima;
-		var scriptAST = astGenerator.parseScript(script); 		
-		
-		this.runRulesOnAST(scriptAST, _rules, this.context);
-						   
-		return this.result;
-		
-	},
+        // Generate AST
+        var _scriptAST = this.generateAST(script);
 
-	type: 'ScriptValidator'
-};]]></script>
+        // Run rules on AST
+        this._executeRulesOnAST(_scriptAST, _ruleObjects);
+
+        return context.results;
+    },
+
+    /**
+     * Run LINTING on Class (ex - sys_script, script_include)
+     *  @param {GlideRecord} glideScriptRecord
+     *  @param {String} scriptFieldName
+     *
+     *  @return {Array} Findings on the script
+     */
+    runOnRecord: function(glideScriptRecord, field) {},
+
+    /**
+     * Create context for linting
+     * @param {String} script
+     * @param {fileObject} fileInfo
+     *   fileInfo.file
+     *   fileInfo.fileSysId
+     *   fileInfo.fileType
+     *   fileInfo.fileMeta
+     *
+     * @return {Object} context
+     */
+    createContext: function(script, fileInfo) {
+        return new SNLintParseContext(script, fileInfo);
+    },
+    /**
+     *
+     */
+    generateAST: function(script) {
+        if (!script) return;
+
+        var _astEngine = new __NowESPrima().esprima;
+        var _scriptAST = _astEngine.parseScript(script);
+
+        return _scriptAST;
+    },
+
+    /**
+     *
+     */
+    _executeRulesOnAST: function(ast, ruleObjects) {
+        if (!ast || !ruleObjects) return;
+
+        var _parser = new __NowESTraverse();
+
+		_parser.traverse(_scriptAST, {
+			enter: function(node, parent) {
+				node.parent = parent;
+				ruleObjects.forEach(function(rule) {
+					var ruleObj = rule.ruleObject;
+					gs.info(Object.keys(ruleObj));
+
+					if (node.type && Object.keys(ruleObj).indexOf(node.type) >= 0) {
+						gs.info(node.type);
+						if (typeof ruleObj[node.type] == "function") {
+							gs.info("IN call expression");
+							//ruleObj[node.type](node);
+						}
+					}
+				});
+			},
+			leave: function(node, parent) {
+				ruleObjects.forEach(function(rule) {
+					var ruleObj = rule.ruleObject;
+					if (node.type && Object.keys(ruleObj).indexOf(node.type + ":exit") >= 0) {
+						if (typeof ruleObj[node.type] == "function") {
+							ruleObj[node.type](node);
+						}
+					}
+				});
+			}
+		});
+
+    },
+
+    type: "SNLint"
+};
+]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-08 16:01:21</sys_created_on>
         <sys_id>16566b19db2bcf00a86a5404ce961919</sys_id>
-        <sys_mod_count>12</sys_mod_count>
-        <sys_name>ScriptValidator</sys_name>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>SNLint</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_16566b19db2bcf00a86a5404ce961919</sys_update_name>
-        <sys_updated_by>pradeep.g</sys_updated_by>
-        <sys_updated_on>2018-01-11 05:49:48</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-25 07:53:29</sys_updated_on>
     </sys_script_include>
 </record_update>

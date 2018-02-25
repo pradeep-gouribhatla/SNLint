@@ -3,12 +3,28 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_snc_snlint.ESTraverse</api_name>
+        <api_name>x_snc_snlint.__NowESTraverse</api_name>
         <client_callable>false</client_callable>
         <description/>
-        <name>ESTraverse</name>
-        <script><![CDATA[var ESTraverse = Class.create();
-ESTraverse.prototype = {
+        <name>__NowESTraverse</name>
+        <script><![CDATA[var __NowESTraverse = Class.create();
+__NowESTraverse.prototype = {
+	
+	/****************************************************
+	 ****************************************************
+	 ****************************************************
+	
+		Estraverse (estraverse) is ECMAScript traversal 
+		functions from esmangle project.
+		
+		https://github.com/estools/estraverse
+		
+		USAGE : https://github.com/estools/estraverse/wiki/Usage
+		
+	 ****************************************************
+	 ****************************************************
+	 ****************************************************/
+	
     initialize: function() {
 		
 		/*
@@ -863,19 +879,19 @@ ESTraverse.prototype = {
 		/* vim: set sw=4 ts=4 et tw=80 : */
     },
 
-    type: 'ESTraverse'
+    type: '__NowESTraverse'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-09 08:37:49</sys_created_on>
         <sys_id>7e4ccb21dbefcf00a86a5404ce961933</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>ESTraverse</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>__NowESTraverse</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_7e4ccb21dbefcf00a86a5404ce961933</sys_update_name>
-        <sys_updated_by>pradeep.g</sys_updated_by>
-        <sys_updated_on>2018-01-09 08:37:49</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-24 15:58:15</sys_updated_on>
     </sys_script_include>
 </record_update>

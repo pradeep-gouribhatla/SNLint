@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_snlint.SNLintParseContext</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SNLintParseContext</name>
+        <script><![CDATA[var SNLintParseContext = Class.create();
+SNLintParseContext.prototype = {
+    fileInfo: {},
+
+    initialize: function(script, fileInfo) {
+        if (!fileInfo) fileInfo = {};
+        this.fileInfo = {
+            id: fileInfo.file || "",
+            name: fileInfo.fileSysId || "",
+            type: fileInfo.fileType || "",
+            meta: fileInfo.fileMeta || {},
+            script: script || 'Script not available in context'
+        };
+
+        this.results = [];
+    },
+
+    report: function(node, msg) {
+        this.results.push({
+            "node": node,
+            "message": msg
+        });
+    },
+
+    type: "SNLintParseContext"
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-24 16:24:30</sys_created_on>
+        <sys_id>29407528dba4d3403130361b7c961919</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>SNLintParseContext</sys_name>
+        <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
+        <sys_update_name>sys_script_include_29407528dba4d3403130361b7c961919</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-25 06:59:51</sys_updated_on>
+    </sys_script_include>
+</record_update>

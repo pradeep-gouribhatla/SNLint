@@ -3,12 +3,12 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_snc_snlint.NowESPrima</api_name>
+        <api_name>x_snc_snlint.__NowESPrima</api_name>
         <client_callable>false</client_callable>
         <description/>
-        <name>NowESPrima</name>
-        <script><![CDATA[var NowESPrima = Class.create();
-NowESPrima.prototype = {
+        <name>__NowESPrima</name>
+        <script><![CDATA[var __NowESPrima = Class.create();
+__NowESPrima.prototype = {
     initialize: function() {
 		(function webpackUniversalModuleDefinition(root, factory) {
     /* istanbul ignore next */
@@ -6718,19 +6718,19 @@ NowESPrima.prototype = {
 		
     },
 
-    type: 'NowESPrima'
+    type: '__NowESPrima'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-08 07:33:10</sys_created_on>
         <sys_id>35a3b9dddb27cf00a86a5404ce9619cd</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>NowESPrima</sys_name>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>__NowESPrima</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_35a3b9dddb27cf00a86a5404ce9619cd</sys_update_name>
-        <sys_updated_by>pradeep.g</sys_updated_by>
-        <sys_updated_on>2018-01-10 07:12:27</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-24 15:52:41</sys_updated_on>
     </sys_script_include>
 </record_update>

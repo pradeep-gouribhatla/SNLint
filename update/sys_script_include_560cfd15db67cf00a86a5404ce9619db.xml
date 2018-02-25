@@ -3,65 +3,84 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_snc_snlint.RulesHelper</api_name>
+        <api_name>x_snc_snlint.SNLintRulesUtil</api_name>
         <client_callable>false</client_callable>
         <description/>
-        <name>RulesHelper</name>
-        <script><![CDATA[var RulesHelper = Class.create();
-RulesHelper.prototype = {
+        <name>SNLintRulesUtil</name>
+        <script><![CDATA[var SNLintRulesUtil = Class.create();
+SNLintRulesUtil.prototype = {
     initialize: function() {
-		this.__rules = [];
+        this.__allrules = [];
     },
-	
-	_loadRules: function() {
-		
-	},
-	
-	getAllScriptRules: function(){
-		var _rules = [];
-		var gr = new GlideRecord('x_snc_snlint_rules');
-		gr.query();
 
-		while(gr.next()){
-			_rules.push({
-				name : gr.getValue('name'),
-				sys_id: gr.getValue('sys_id')
-			});
-		}
+    _loadRule: function(ruleSysID, context) {
+        return new SNLintRule(ruleSysID,context);
+    },
 
-		return _rules;
-	},
-	
-	getAllRules: function() {
-		return this.__rules;
-	},
-	
-	getOOBRules: function() {
-		return this.__rules;
-	},
-    
-	getCustomRules: function() {
-		return this.__rules;
-	},
-      
-	/* Get all the matching rule names for a record type*/
-	getAllRulesByType: function() {
-		return this.__rules;
-	},
+    _loadRules: function(rSysIds, context) {
+        if (!Array.isArray(rSysIds)) return [];
 
-    type: 'RulesHelper'
-};]]></script>
+        return rSysIds.map(function(rSysId) {
+            return this._loadRule(rSysId, context);
+        }, this);
+    },
+
+    getAllRuleObjects: function(context) {
+        var _rules = [];
+        var rulesGR = new GlideRecord("x_snc_snlint_rules");
+        //rulesGR.addActiveQuery();
+        rulesGR.query();
+
+        while (rulesGR.next()) {
+            _rules.push(rulesGR.getValue("sys_id"));
+        }
+
+        return this._loadRules(_rules, context);
+    },
+
+    getAllScriptRules: function() {
+        var _rules = [];
+        var gr = new GlideRecord("x_snc_snlint_rules");
+        gr.query();
+
+        while (gr.next()) {
+            _rules.push(gr.getValue("sys_id"));
+        }
+
+        return _rules;
+    },
+
+    getAllRules: function() {
+        return this.__allrules;
+    },
+
+    getOOBRules: function() {
+        return this.__allrules;
+    },
+
+    getCustomRules: function() {
+        return this.__allrules;
+    },
+
+    /* Get all the matching rule names for a record type*/
+    getAllRulesByType: function() {
+        return this.__allrules;
+    },
+
+    type: "SNLintRulesUtil"
+};
+]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pradeep.g</sys_created_by>
         <sys_created_on>2018-01-08 08:08:06</sys_created_on>
         <sys_id>560cfd15db67cf00a86a5404ce9619db</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>RulesHelper</sys_name>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>SNLintRulesUtil</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_560cfd15db67cf00a86a5404ce9619db</sys_update_name>
-        <sys_updated_by>pradeep.g</sys_updated_by>
-        <sys_updated_on>2018-01-10 07:19:00</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-24 19:32:38</sys_updated_on>
     </sys_script_include>
 </record_update>
