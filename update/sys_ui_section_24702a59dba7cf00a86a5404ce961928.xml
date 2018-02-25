@@ -4,98 +4,140 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
             <position>0</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>cd90e299dba7cf00a86a5404ce961936</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>9b1147f0db2417403130361b7c961937</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>number</element>
             <position>1</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>4190e299dba7cf00a86a5404ce961937</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>1f1147f0db2417403130361b7c961937</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>9f1147f0db2417403130361b7c961937</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>2</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>c190e299dba7cf00a86a5404ce961937</sys_id>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>131147f0db2417403130361b7c961938</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>level</element>
-            <position>3</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>4590e299dba7cf00a86a5404ce961937</sys_id>
+            <element>active</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>931147f0db2417403130361b7c961938</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>level</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>171147f0db2417403130361b7c961938</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>4</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>c590e299dba7cf00a86a5404ce961937</sys_id>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>971147f0db2417403130361b7c961938</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>description</element>
-            <position>5</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>4990e299dba7cf00a86a5404ce961937</sys_id>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>1b1147f0db2417403130361b7c961938</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>condition</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>9b1147f0db2417403130361b7c961938</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>script</element>
-            <position>6</position>
-            <sys_created_by>pradeep.g</sys_created_by>
-            <sys_created_on>2018-01-08 10:47:35</sys_created_on>
-            <sys_id>c990e299dba7cf00a86a5404ce961937</sys_id>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-25 16:55:33</sys_created_on>
+            <sys_id>1f1147f0db2417403130361b7c961938</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_snlint_rules" sys_domain="global" view="Default view">24702a59dba7cf00a86a5404ce961928</sys_ui_section>
-            <sys_updated_by>pradeep.g</sys_updated_by>
-            <sys_updated_on>2018-01-08 10:47:35</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-25 16:55:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
