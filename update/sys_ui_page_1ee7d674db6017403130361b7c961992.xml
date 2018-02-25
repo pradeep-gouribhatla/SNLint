@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_snc_snlint_SNLintDebug.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<g:evaluate var="jvar_code_snippet" expression="RP.getParameterValue('script_snippet')"/>
+	
+	<div class="section_header_div_no_scroll form_title">
+		<nav class="navbar navbar-default section_zero " style="padding: 10px;margin-bottom: 20px;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<h1 class="form_header navbar-title navbar-title-twoline" style="font-size:16px">
+						SNLint Debug
+					</h1>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<g:ui_form>
+		<h4>Copy/paste the script to be linted</h4>
+		<div class="form-group">
+		  <label for="comment">Script:</label>
+		  <textarea class="form-control" rows="10" id="script_snippet" name="script_snippet">${jvar_code_snippet}</textarea>
+		</div>
+		
+		<div class="form_action_button_container">
+			<button class="form_action_button action_context btn btn-default" style="white-space: nowrap" type="submit" value="sysverb_update" id="sysverb_update" name="not_important">Validate</button>
+		</div>
+		
+		<!-- RESULTS -->
+		<g:evaluate var="jvar_param_snlint_script" expression="gs.getSession().getClientData('snlint_script')" />
+		<h2>Script</h2>
+		<pre>
+			<g2:no_escape>${HTML:jvar_param_snlint_script}</g2:no_escape>
+		</pre>
+		
+		<hr/>
+		
+		<g:evaluate var="jvar_param_lint_rules" expression="gs.getSession().getClientData('snlint_results')" />
+		<h2>Findings</h2>
+		<g2:no_escape>${HTML:jvar_param_lint_rules}</g2:no_escape>
+		
+	</g:ui_form>
+	<style>.red{color:red}</style>
+		
+</j:jelly>]]></html>
+        <name>SNLintDebug</name>
+        <processing_script><![CDATA[//Get  Script
+var _script = request.getParameter('script_snippet');
+
+//Run linting on all rules
+var snLint = new SNLint(); 
+var results = snLint.runOnScript(_script); 
+
+//print results
+var _output = '', fLines = [] ;
+results.forEach(function(r){	
+  _output += ('<p>Line ['+r.node.loc.start.line + '] : ' + r.message + '</p>');
+  fLines.push(r.node.loc.start.line);
+});
+
+var lno = 0;
+var _outputScript = _script
+	.split('\n')
+	.map(function(cl){ 
+		lno++;
+		if(fLines.indexOf(lno)>= 0)
+			return ('<span class="red">['+lno+']  '+ cl + '</span>');
+		else 
+			return ('<span class="">['+lno+']  '+ cl + '</span>');
+	})
+	.join('');
+
+gs.getSession().putClientData('snlint_results',_output);
+gs.getSession().putClientData('snlint_script', _outputScript);
+
+
+]]></processing_script>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-25 14:11:41</sys_created_on>
+        <sys_id>1ee7d674db6017403130361b7c961992</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>SNLintDebug</sys_name>
+        <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
+        <sys_update_name>sys_ui_page_1ee7d674db6017403130361b7c961992</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-25 16:47:08</sys_updated_on>
+    </sys_ui_page>
+</record_update>

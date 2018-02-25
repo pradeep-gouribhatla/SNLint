@@ -13,6 +13,7 @@ SNLintRule.prototype = {
     name: "",
     level: "",
     description: "",
+	definition: {},
 	context : {},
 	
     initialize: function(ruleSysId,context) {
@@ -28,7 +29,7 @@ SNLintRule.prototype = {
 				if (!context) context = new SNLintParseContext();
 				this.context = context;
 				
-                this.ruleObject = this.getRuleObject(ruleDefGR);
+                this.definition = this.getRuleObject(ruleDefGR);
             }
         }
 		
@@ -39,9 +40,7 @@ SNLintRule.prototype = {
 		
         var _gsEvaluator = new GlideScopedEvaluator();
 		_gsEvaluator.putVariable('context', this.context);
-		var lintRuleObj = {};
-        var lintRuleObj = _gsEvaluator.evaluateScript(ruleDefGR, "script");
-
+        var lintRuleObj = _gsEvaluator.evaluateScript(ruleDefGR, "script");		
         return lintRuleObj;
     },
 
@@ -52,13 +51,13 @@ SNLintRule.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-24 18:36:30</sys_created_on>
         <sys_id>de9e8e68dbe4d3403130361b7c9619ec</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>48</sys_mod_count>
         <sys_name>SNLintRule</sys_name>
         <sys_package display_value="SNLint" source="x_snc_snlint">8a93f59ddb27cf00a86a5404ce961961</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="SNLint">8a93f59ddb27cf00a86a5404ce961961</sys_scope>
         <sys_update_name>sys_script_include_de9e8e68dbe4d3403130361b7c9619ec</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-02-25 07:51:52</sys_updated_on>
+        <sys_updated_on>2018-02-25 09:58:34</sys_updated_on>
     </sys_script_include>
 </record_update>
